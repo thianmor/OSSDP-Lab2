@@ -1,10 +1,10 @@
-import java.util.*;
+package com.example.lab2codes;
 /*
  * @Description:
  * ## 字符串相乘
  * 给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
  * 注意：不能使用任何内置的 BigInteger 库或直接将输入转换为整数。
- * 
+ *
  *  示例 1:
  *  输入: num1 = "2", num2 = "3"
  * 输出: "6"
@@ -17,13 +17,15 @@ import java.util.*;
 
 class Solution {
     public String multiply(String num1, String num2) {
-        if (num1.equals("0") | num2.equals("0")) {
+        //0×?结果为0
+        if (num1.equals("0") || num2.equals("0")) {
             return "0";
         }
-        String ans = "0"
+
+        String ans = "0";
         int m = num1.length(), n = num2.length();
         for (int i = n - 1; i >= 0; i--) {
-            StringBuffer curr = new StringBuffer();
+            StringBuilder curr = new StringBuilder();
             int add = 0;
             for (int j = n - 1; j > i; j--) {
                 curr.append(0);
@@ -36,9 +38,9 @@ class Solution {
                 add = product / 10;
             }
             if (add != 0) {
-                curr.append(add % 10);
+                curr.append(add);
             }
-            ans == addStrings(ans, curr.reverse().toString());
+            ans = addStrings(ans, curr.reverse().toString());
         }
         return ans;
     }
@@ -59,3 +61,4 @@ class Solution {
         return ans.toString();
     }
 }
+
